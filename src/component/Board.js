@@ -10,20 +10,28 @@ class Board extends Component {
      this.handleChange = this.handleChange.bind(this);
      this.handleSubmit = this.handleSubmit.bind(this);
    }
+   guessedLetter(letter){
+
+     this.props.dispatch({type:"TAKE_GUESS", payload: this.state.value})
+   }
+
    handleChange(event) {
        this.setState({value: event.target.value});
      }
 
      handleSubmit(event) {
-       alert('Your favorite flavor is: ' + this.state.value);
+       // this.decrementGuessesLeft()
+       this.guessedLetter(this.state.value)
        event.preventDefault();
+
      }
 
   render(){
     return <div>
     <h2 className='titleclass2'>Total guesses 6</h2>
     <h2 className='titleclass2'>Guesses left {this.props.guessesleft}</h2>
-    <h2 className='titleclass2'>Word to Guess {this.props.word}</h2>
+    <h2 className='titleclass2'>Word to Guess</h2>
+    <h1>{this.props.wordAsDisplayed.map(function(letter){return letter +" "})}</h1>
     <form onSubmit={this.handleSubmit}>
         <label>
           Pick a letter:
@@ -73,8 +81,8 @@ const mapStateToProps = (reduxState) => {
   // return an object with the prop names (keys) and prop values
   // taken from the reduxState (values)
   return {
-    guessesleft: reduxState.guessesLeft,
-    word: reduxState.word
+    guessesleft: reduxState.guessesleft,
+    wordAsDisplayed: reduxState.wordAsDisplayed
   }
 }
 

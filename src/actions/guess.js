@@ -5,7 +5,8 @@ export const takeGuess = (letter) => {
   return {
     type: TAKE_GUESS,
     payload: {
-      guessesLeft
+      guessesleft,
+      wordAsDisplayed
     }
   }
 }

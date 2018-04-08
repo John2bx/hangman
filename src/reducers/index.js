@@ -1,10 +1,11 @@
-import word from './word'
-import guessesLeft from './guessesleft'
+import wordAsDisplayed from './wordAsDisplayed'
+import guessesleft from './guessesleft'
 
 
 export default {
-  word,
-  guessesLeft,
+  guessesleft,
+  wordAsDisplayed,
+  
 }
 
 
