@@ -1,7 +1,9 @@
 import { TAKE_GUESS } from '../actions/types'
 import guessesleft from './guessesleft'
 
-export const wordToGuess = ['h','e','l','l','o']
+const wordList = ['hello','baby','football','coding']
+const wordToPutInArray = wordList[Math.floor((Math.random() * wordList.length) + 1)]
+export const wordToGuess = Array.from(wordToPutInArray)
 const initialState = wordToGuess.map(function(l){return '_'})
 let guessesSoFar = []
 
