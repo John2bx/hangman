@@ -3,23 +3,63 @@ import { connect } from 'react-redux'
 
 
 class Board extends Component {
-  constructor(props){
-    super(props)
-    this.state = {totalGuesses: 6}
+  constructor(props) {
+     super(props);
+     this.state = {value: ''};
 
-  }
+     this.handleChange = this.handleChange.bind(this);
+     this.handleSubmit = this.handleSubmit.bind(this);
+   }
+   handleChange(event) {
+       this.setState({value: event.target.value});
+     }
+
+     handleSubmit(event) {
+       alert('Your favorite flavor is: ' + this.state.value);
+       event.preventDefault();
+     }
+
   render(){
     return <div>
-    <h2 className='titleclass2'>Total guesses {this.state.totalGuesses}</h2>
+    <h2 className='titleclass2'>Total guesses 6</h2>
     <h2 className='titleclass2'>Guesses left {this.props.guessesleft}</h2>
     <h2 className='titleclass2'>Word to Guess {this.props.word}</h2>
-    <form>
-  <label>
-    Type a letter:
-    <input type="text" name="name" />
-  </label>
-  <input type="submit" value="Submit" />
-</form>
+    <form onSubmit={this.handleSubmit}>
+        <label>
+          Pick a letter:
+           <select value={this.state.value} onChange={this.handleChange}>
+            <option value="a">A</option>
+            <option value="b">B</option>
+            <option value="c">C</option>
+            <option value="d">D</option>
+            <option value="e">E</option>
+            <option value="f">F</option>
+            <option value="g">G</option>
+            <option value="h">H</option>
+            <option value="i">I</option>
+            <option value="j">J</option>
+            <option value="k">K</option>
+            <option value="l">L</option>
+            <option value="m">M</option>
+            <option value="n">N</option>
+            <option value="o">O</option>
+            <option value="p">P</option>
+            <option value="q">Q</option>
+            <option value="r">R</option>
+            <option value="s">S</option>
+            <option value="t">T</option>
+            <option value="u">U</option>
+            <option value="v">V</option>
+            <option value="w">W</option>
+            <option value="x">X</option>
+            <option value="y">Y</option>
+            <option value="z">Z</option>
+
+
+          </select>
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
     <img/>
     </div>
 
