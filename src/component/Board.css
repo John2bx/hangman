@@ -1,0 +1,17 @@
+.h1{
+  font-size: 30px
+}
+.Left{
+text-align: left;
+
+}
+.Big{font-size: 300px;
+text-align: center;}
+
+.Right{
+  text-align: right;
+
+}
+.Center{
+  text-align: center;
+  }/*the container must be positioned relative:*/

@@ -2,6 +2,8 @@ import React,{Component} from 'react'
 import { connect } from 'react-redux'
 import guessesleft from '../reducers/guessesleft'
 import {wordToGuess} from '../reducers/wordAsDisplayed'
+import './Board.css';
+
 
 
 
@@ -28,15 +30,15 @@ class Board extends Component {
        event.preventDefault();
 
      }
-     gameboard(){return <div>
-     <h2 className='titleclass2'>Total guesses 6</h2>
-     <h2 className='titleclass2'>Guesses left {this.props.guessesleft}</h2>
-     <h2 className='titleclass2'>Word to Guess</h2>
-     <h1>{this.props.wordAsDisplayed.map(function(letter){return letter +" "})}</h1>
-     <form onSubmit={this.handleSubmit}>
+     gameboard(){return <div className="Board" >
+     <h2 className='Left'>Total guesses 6</h2>
+     <h2 className='Left'>Guesses left {this.props.guessesleft}</h2>
+     <h2 className='Center'>Word to Guess</h2>
+     <h1 className='Center'>{this.props.wordAsDisplayed.map(function(letter){return letter +" "})}</h1>
+     <form className='Center' onSubmit={this.handleSubmit}>
          <label>
-           Pick a letter:
-            <select value={this.state.value} onChange={this.handleChange}>
+           <h2>Pick a letter:</h2>
+            <select className='Center'  value={this.state.value} onChange={this.handleChange}>
              <option value="a">A</option>
              <option value="b">B</option>
              <option value="c">C</option>
@@ -69,7 +71,7 @@ class Board extends Component {
          </label>
          <input type="submit" value="Submit" />
        </form>
-     <img/>
+
      </div>
  }
 
@@ -85,8 +87,8 @@ class Board extends Component {
 
 
 
-  render(){ if (this.checkIfWin()){return <h1> you won!</h1>}
-  else if (this.checkifLose()){return <h1> you lost!</h1>}
+  render(){ if (this.checkIfWin()){return <h1 className='Big'> you won!</h1>}
+  else if (this.checkifLose()){return <h1 className='Big'> you lost!</h1>}
   else {return this.gameboard()}
 
   }
