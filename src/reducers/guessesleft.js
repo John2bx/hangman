@@ -1,11 +1,12 @@
 import { TAKE_GUESS } from '../actions/types'
-
-const initialState = 6
+import {wordToGuess} from './wordAsDisplayed.js'
+const initialState = 8
 
 export default (state = initialState, { type, payload } = {}) => {
     switch(type) {
       case TAKE_GUESS:
-        if (state>0){
+      console.log(wordToGuess)
+        if (!wordToGuess.includes(payload)){
         return state - 1}
         else {return state}
     default:

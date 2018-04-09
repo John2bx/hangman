@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Board from './component/Board'
-
+import Board from './component/Board';
+import Image from './component/Image'
 
 class App extends Component {
   render() {
@@ -12,7 +12,8 @@ class App extends Component {
           <h1 className="App-title">Welcome to the hangmen game!</h1>
         </header>
         <Board/>
-        
+        <Image/>
+
 
       </div>
     );

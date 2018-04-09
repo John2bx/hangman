@@ -13,7 +13,7 @@ export default (state = initialState, { type, payload } = {}) => {
     case TAKE_GUESS:
 
 
-
+      
       guessesSoFar = guessesSoFar.concat(payload)
       return  wordToGuess.map(function(letter){
         if (guessesSoFar.includes(letter)){return letter}

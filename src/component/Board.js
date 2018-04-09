@@ -1,8 +1,15 @@
 import React,{Component} from 'react'
 import { connect } from 'react-redux'
-import guessesleft from '../reducers/guessesleft'
 import {wordToGuess} from '../reducers/wordAsDisplayed'
 import './Board.css';
+import pic1 from '../1.png';
+import pic2 from '../2.png';
+import pic3 from '../3.png';
+import pic4 from '../4.png';
+import pic5 from '../5.png';
+import pic6 from '../6.png';
+import pic7 from '../7.png';
+import pic8 from '../8.png';
 
 
 
@@ -14,7 +21,9 @@ class Board extends Component {
 
      this.handleChange = this.handleChange.bind(this);
      this.handleSubmit = this.handleSubmit.bind(this);
+     // this.showImage = this.showImage.bind(this)
    }
+   // showImage(){return 'pic'+this.props.guessesleft}
    guessedLetter(letter){
 
      this.props.dispatch({type:"TAKE_GUESS", payload: this.state.value})
@@ -25,12 +34,13 @@ class Board extends Component {
      }
 
      handleSubmit(event) {
-       // this.decrementGuessesLeft()
+       event.preventDefault()// this.decrementGuessesLeft()
        this.guessedLetter(this.state.value)
        event.preventDefault();
 
      }
      gameboard(){return <div className="Board" >
+
      <h2 className='Left'>Total guesses 6</h2>
      <h2 className='Left'>Guesses left {this.props.guessesleft}</h2>
      <h2 className='Center'>Word to Guess</h2>
@@ -38,6 +48,7 @@ class Board extends Component {
      <form className='Center' onSubmit={this.handleSubmit}>
          <label>
            <h2>Pick a letter:</h2>
+           <div className='custom-select' >
             <select className='Center'  value={this.state.value} onChange={this.handleChange}>
              <option value="a">A</option>
              <option value="b">B</option>
@@ -68,6 +79,7 @@ class Board extends Component {
 
 
            </select>
+           </div>
          </label>
          <input type="submit" value="Submit" />
        </form>
