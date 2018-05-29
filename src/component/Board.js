@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import { connect } from 'react-redux'
 import {wordToGuess} from '../reducers/wordAsDisplayed'
+import {takeGuess} from '../actions/guess'
 import './Board.css';
 import pic1 from '../1.png';
 import pic2 from '../2.png';
@@ -10,6 +11,7 @@ import pic5 from '../5.png';
 import pic6 from '../6.png';
 import pic7 from '../7.png';
 import pic8 from '../8.png';
+import Image from './Image'
 
 
 
@@ -24,65 +26,66 @@ class Board extends Component {
      // this.showImage = this.showImage.bind(this)
    }
    // showImage(){return 'pic'+this.props.guessesleft}
-   guessedLetter(letter){
 
-     this.props.dispatch({type:"TAKE_GUESS", payload: this.state.value})
-   }
 
    handleChange(event) {
        this.setState({value: event.target.value});
+       this.props.takeGuess(this.state.value)
      }
 
      handleSubmit(event) {
-       event.preventDefault()// this.decrementGuessesLeft()
-       this.guessedLetter(this.state.value)
-       event.preventDefault();
+       event.preventDefault()
+
+       console.log('i am here',event.target.value)
+       this.props.takeGuess(event.target.value)
+
 
      }
      gameboard(){return <div className="Board" >
+     <Image/>
 
      <h2 className='Left'>Total guesses 6</h2>
      <h2 className='Left'>Guesses left {this.props.guessesleft}</h2>
      <h2 className='Center'>Word to Guess</h2>
      <h1 className='Center'>{this.props.wordAsDisplayed.map(function(letter){return letter +" "})}</h1>
-     <form className='Center' onSubmit={this.handleSubmit}>
+
          <label>
            <h2>Pick a letter:</h2>
-           <div className='custom-select' >
-            <select className='Center'  value={this.state.value} onChange={this.handleChange}>
-             <option value="a">A</option>
-             <option value="b">B</option>
-             <option value="c">C</option>
-             <option value="d">D</option>
-             <option value="e">E</option>
-             <option value="f">F</option>
-             <option value="g">G</option>
-             <option value="h">H</option>
-             <option value="i">I</option>
-             <option value="j">J</option>
-             <option value="k">K</option>
-             <option value="l">L</option>
-             <option value="m">M</option>
-             <option value="n">N</option>
-             <option value="o">O</option>
-             <option value="p">P</option>
-             <option value="q">Q</option>
-             <option value="r">R</option>
-             <option value="s">S</option>
-             <option value="t">T</option>
-             <option value="u">U</option>
-             <option value="v">V</option>
-             <option value="w">W</option>
-             <option value="x">X</option>
-             <option value="y">Y</option>
-             <option value="z">Z</option>
+<div className='keyboard'>
+            <form>
+             <input type="submit" className='board' value="a" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="b" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="c" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="d" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="e" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="f" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="g" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="h" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="i" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="j" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="k" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="l" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="m" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="n" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="o" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="p" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="q" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="r" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="s" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="t" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="u" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="v" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="w" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="x" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="y" onClick={this.handleSubmit}/>
+             <input type="submit" className='board' value="z" onClick={this.handleSubmit}/>
 
 
-           </select>
-           </div>
+           </form>
+  </div>
          </label>
-         <input type="submit" value="Submit" />
-       </form>
+
+
 
      </div>
  }
@@ -118,4 +121,4 @@ const mapStateToProps = (reduxState) => {
 }
 
 // Then pass it to connect:
-export default connect(mapStateToProps)(Board)
+export default connect(mapStateToProps,{takeGuess})(Board)

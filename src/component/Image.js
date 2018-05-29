@@ -15,14 +15,14 @@ import pic8 from '../8.png';
 
 class Image extends Component {
 render(){
-if(this.props.guessesleft === 8) {return <img src={pic1} style={{maxWidth:500}}/>}
-else if (this.props.guessesleft === 7) {return <img src={pic2} style={{maxWidth:500}}/>}
-else if (this.props.guessesleft === 6) {return <img src={pic3} style={{maxWidth:500}}/>}
-else if (this.props.guessesleft === 5) {return <img src={pic4} style={{maxWidth:500}}/>}
-else if (this.props.guessesleft === 4) {return <img src={pic5} style={{maxWidth:500}}/>}
-else if (this.props.guessesleft === 3) {return <img src={pic6} style={{maxWidth:500}}/>}
-else if (this.props.guessesleft === 2) {return <img src={pic7} style={{maxWidth:500}}/>}
-else if (this.props.guessesleft === 1) {return <img src={pic8} style={{maxWidth:500}}/>}
+if(this.props.guessesleft === 8) {return null}
+else if (this.props.guessesleft === 7) {return <img src={pic1} style={{maxWidth:150}}/>}
+else if (this.props.guessesleft === 6) {return <img src={pic2} style={{maxWidth:150}}/>}
+else if (this.props.guessesleft === 5) {return <img src={pic3} style={{maxWidth:150}}/>}
+else if (this.props.guessesleft === 4) {return <img src={pic4} style={{maxWidth:150}}/>}
+else if (this.props.guessesleft === 3) {return <img src={pic5} style={{maxWidth:150}}/>}
+else if (this.props.guessesleft === 2) {return <img src={pic6} style={{maxWidth:150}}/>}
+else if (this.props.guessesleft === 1) {return <img src={pic7} style={{maxWidth:150}}/>}
 
 
 }}
